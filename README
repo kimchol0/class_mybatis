@@ -1,0 +1,27 @@
+这是一个利用mybatis做的练习。
+
+开发环境为：
+
+java version "11.0.3" 2019-04-16 LTS
+
+Java(TM) SE Runtime Environment 18.9 (build 11.0.3+12-LTS)
+
+Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.3+12-LTS, mixed mode)
+
+Spring Tool Suite 4
+
+jar包版本为（截至V0.3）：
+
+mybatis 3.5.2
+
+log4j 1.2.17
+
+junit 5.5.0
+
+commons-logging 1.2
+
+slf4j-log4j 1.7.26
+
+
+
+

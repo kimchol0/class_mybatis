@@ -8,4 +8,9 @@
     select * from user where id = #{value}
   </select>
   
+  <select id="findUserByName" parameterType="java.lang.String" resultType="cn.mybatis.po.User">
+	select * from user where username like '%${value}%'  	
+  </select>
+  
+  
 </mapper>

@@ -4,6 +4,8 @@ import java.util.List;
 
 import cn.mybatis.dao.UserDao;
 import cn.mybatis.po.User;
+import cn.mybatis.po.UserCustom;
+import cn.mybatis.po.UserQueryVo;
 
 public interface UserMapper {
 	
@@ -13,5 +15,6 @@ public interface UserMapper {
 	
 	public void insertUser(UserDao user) throws Exception;
 	
-
+	public List<UserCustom> findUserList (UserQueryVo userQueryVo) throws Exception;
+	
 }

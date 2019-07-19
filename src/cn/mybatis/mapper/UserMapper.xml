@@ -27,4 +27,19 @@
  	update user set username=#{username},birthday=#{birthday},sex=#{sex},address=#{address} where id=#{id} 	
   </update>
   
+  <select id="findUserList" parameterType="cn.mybatis.po.UserQueryVo" resultType="cn.mybatis.po.UserCustom">
+  	select * from User
+  	<where>
+  		<if test="userCustom !=null ">
+  			<if test="userCustom.sex !=null and userCustom.sex != '' ">
+  				and user.sex=#{userCustom.sex}
+  			</if>
+  			<if test="userCustom.username !=null and userCustom.username != '' ">
+  				and user.username=#{userCustom.username}
+  			</if>
+ 		</if>
+  	</where>
+  </select>
+  
+  
 </mapper>

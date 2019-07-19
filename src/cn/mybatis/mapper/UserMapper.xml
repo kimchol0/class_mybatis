@@ -30,6 +30,11 @@
   <select id="findUserList" parameterType="cn.mybatis.po.UserQueryVo" resultType="cn.mybatis.po.UserCustom">
   	select * from User
   	<where>
+		<include refid="query_user_where"></include>
+  	</where>
+  </select>
+  
+	<sql id="query_user_where">
   		<if test="userCustom !=null ">
   			<if test="userCustom.sex !=null and userCustom.sex != '' ">
   				and user.sex=#{userCustom.sex}
@@ -38,8 +43,8 @@
   				and user.username=#{userCustom.username}
   			</if>
  		</if>
-  	</where>
-  </select>
+  	</sql>
+  
   
   
 </mapper>

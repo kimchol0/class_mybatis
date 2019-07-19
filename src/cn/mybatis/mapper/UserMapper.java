@@ -17,4 +17,6 @@ public interface UserMapper {
 	
 	public List<UserCustom> findUserList (UserQueryVo userQueryVo) throws Exception;
 	
+	
+	
 }

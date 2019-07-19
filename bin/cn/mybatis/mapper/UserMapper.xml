@@ -45,8 +45,8 @@
  		</if>
  		
  		<if test="ids!=null">
- 			<foreach collection="ids" item="user_id" open="AND (" close=")" separator="or">
- 				id=#{user_id}		
+ 			<foreach collection="ids" item="user_id" open="AND id in (" close=")" separator=",">
+ 				#{user_id}		
  			</foreach>
  		</if>
  		

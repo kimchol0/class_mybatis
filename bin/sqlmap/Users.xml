@@ -15,4 +15,13 @@
   <insert id="insertUser" parameterType="cn.mybatis.po.User">
   	insert into user(id,username,birthday,sex,address) value(#{id},#{username},#{birthday},#{sex},#{address})
   </insert>
+  
+  <delete id="deleteUser" parameterType="java.lang.Integer">
+  	delete from user where id=#{id}
+  </delete>
+  
+  <update id="updateUser" parameterType="cn.mybatis.po.User">
+ 	update user set username=#{username},birthday=#{birthday},sex=#{sex},address=#{address} where id=#{id} 	
+  </update>
+  
 </mapper>

@@ -74,5 +74,48 @@ public class MyBatisTest {
 		mybatisSqlSession.close();
 		
 	}
+	
+	@Test
+	public void deleteUserTest()throws Exception{
+		
+		String mybatisConfigurationFileName = "SqlMapConfig.xml";
+		
+		InputStream mybatisConfigurationFileInputStream = Resources.getResourceAsStream(mybatisConfigurationFileName);
+		
+		SqlSessionFactory mybatisSqlSessionFactory = new SqlSessionFactoryBuilder().build(mybatisConfigurationFileInputStream);	
+		
+		SqlSession mybatisSqlSession = mybatisSqlSessionFactory.openSession();
+		
+		mybatisSqlSession.delete("test.deleteUser", 40);
+		
+		mybatisSqlSession.commit();
+		
+		mybatisSqlSession.close();
+		
+	}
+	
+	@Test
+	public void updateUserTest()throws Exception{
+		
+		String mybatisConfigurationFileName = "SqlMapConfig.xml";
+		
+		InputStream mybatisConfigurationFileInputStream = Resources.getResourceAsStream(mybatisConfigurationFileName);
+		
+		SqlSessionFactory mybatisSqlSessionFactory = new SqlSessionFactoryBuilder().build(mybatisConfigurationFileInputStream);	
+		
+		SqlSession mybatisSqlSession = mybatisSqlSessionFactory.openSession();
+		
+		User user = new User();
+		user.setUsername("jack40");
+		user.setSex("1");
+		user.setId(40);
+		
+		mybatisSqlSession.update("test.updateUser",user);
+		
+		mybatisSqlSession.commit();
+		
+		mybatisSqlSession.close();
+		
+	}
 
 }

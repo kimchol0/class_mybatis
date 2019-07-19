@@ -49,5 +49,30 @@ public class MyBatisTest {
 		
 		mybatisSqlSession.close();
 	}
+	
+	@Test
+	public void insertUserTest()throws Exception{
+		
+		String mybatisConfigurationFileName = "SqlMapConfig.xml";
+		
+		InputStream mybatisConfigurationFileInputStream = Resources.getResourceAsStream(mybatisConfigurationFileName);
+		
+		SqlSessionFactory mybatisSqlSessionFactory = new SqlSessionFactoryBuilder().build(mybatisConfigurationFileInputStream);	
+		
+		SqlSession mybatisSqlSession = mybatisSqlSessionFactory.openSession();
+		
+		User user = new User();
+		
+		user.setId(40);
+		user.setUsername("jack");
+		user.setSex("1");
+		
+		mybatisSqlSession.insert("test.insertUser",user);
+		
+		mybatisSqlSession.commit();
+		
+		mybatisSqlSession.close();
+		
+	}
 
 }

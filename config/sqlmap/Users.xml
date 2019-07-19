@@ -12,5 +12,7 @@
 	select * from user where username like '%${value}%'  	
   </select>
   
-  
+  <insert id="insertUser" parameterType="cn.mybatis.po.User">
+  	insert into user(id,username,birthday,sex,address) value(#{id},#{username},#{birthday},#{sex},#{address})
+  </insert>
 </mapper>

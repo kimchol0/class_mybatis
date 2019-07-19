@@ -43,6 +43,13 @@
   				and user.username=#{userCustom.username}
   			</if>
  		</if>
+ 		
+ 		<if test="ids!=null">
+ 			<foreach collection="ids" item="user_id" open="AND (" close=")" separator="or">
+ 				id=#{user_id}		
+ 			</foreach>
+ 		</if>
+ 		
   	</sql>
   
   

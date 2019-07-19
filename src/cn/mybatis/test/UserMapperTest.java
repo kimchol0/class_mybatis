@@ -1,6 +1,7 @@
 package cn.mybatis.test;
 
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.io.Resources;
@@ -58,6 +59,12 @@ public class UserMapperTest {
 		userCustom.setSex("1");
 		userCustom.setUsername("张三");
 		
+		List<Integer> ids = new ArrayList<Integer>();
+		ids.add(1);
+		ids.add(10);
+		ids.add(16);
+		
+		userQueryVo.setIds(ids);
 		userQueryVo.setUserCustom(userCustom);
 		
 		List<UserCustom> returnUserList = returnUserListMapper.findUserList(userQueryVo);

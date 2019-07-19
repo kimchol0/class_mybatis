@@ -10,9 +10,9 @@ Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.3+12-LTS, mixed mode)
 
 Spring Tool Suite 4
 
-jar包版本为（截至V0.3）：
+jar包版本为（截至V0.15）：
 
-mybatis 3.5.2
+mybatis 3.5.1
 
 log4j 1.2.17
 

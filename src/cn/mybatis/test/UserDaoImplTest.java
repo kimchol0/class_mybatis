@@ -1,13 +1,11 @@
 package cn.mybatis.test;
 
-import java.io.IOException;
 import java.io.InputStream;
 
 import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import org.aspectj.lang.annotation.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import cn.mybatis.dao.UserDao;
@@ -16,23 +14,23 @@ import cn.mybatis.po.User;
 
 public class UserDaoImplTest {
 	
-	private SqlSessionFactory UserDaoImplTestsqlsessionFactory;
+	private SqlSessionFactory sqlsessionFactory;
 	
-	@Before(value = "")
+	@BeforeEach
 	public void setup() throws Exception {
 		
-		String setupConfigurationFileName = "SqlMapConfig.xml";
+		String ConfigurationFileName = "SqlMapConfig.xml";
 		
-		InputStream setupConfigurationFileInputStream = Resources.getResourceAsStream(setupConfigurationFileName);
+		InputStream ConfigurationFileInputStream = Resources.getResourceAsStream(ConfigurationFileName);
 		
-		SqlSessionFactory setupSqlSessionFactory = new SqlSessionFactoryBuilder().build(setupConfigurationFileInputStream);	
+		sqlsessionFactory = new SqlSessionFactoryBuilder().build(ConfigurationFileInputStream);	
 		
 	}
 	
 	@Test
 	public void testFindUserById() throws Exception {
 		
-		UserDao testFindUserByIduserdao = new UserDaoImpl(UserDaoImplTestsqlsessionFactory);
+		UserDao testFindUserByIduserdao = new UserDaoImpl(sqlsessionFactory);
 		
 		User returnUser = testFindUserByIduserdao.findUserById(1);
 		

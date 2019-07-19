@@ -1,7 +1,5 @@
 package cn.mybatis.test;
 
-import org.junit.jupiter.api.Test;
-
 import cn.mybatis.po.User;
 
 import java.io.InputStream;
@@ -11,55 +9,59 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.junit.jupiter.api.Test;
 
 public class MyBatisTest {
 	
 	@Test
 	public void findUserByIdTest() throws Exception{
 		
-		String mybatisConfigurationFileName = "SqlMapConfig.xml";
+		String findUserByIdTestConfigurationFileName = "SqlMapConfig.xml";
 		
-		InputStream mybatisConfigurationFileInputStream = Resources.getResourceAsStream(mybatisConfigurationFileName);
+		InputStream findUserByIdTestConfigurationFileInputStream = Resources.getResourceAsStream(findUserByIdTestConfigurationFileName);
 		
-		SqlSessionFactory mybatisSqlSessionFactory = new SqlSessionFactoryBuilder().build(mybatisConfigurationFileInputStream);	
+		SqlSessionFactory findUserByIdTestSqlSessionFactory = new SqlSessionFactoryBuilder().build(findUserByIdTestConfigurationFileInputStream);	
 		
-		SqlSession mybatisSqlSession = mybatisSqlSessionFactory.openSession();
+		SqlSession findUserByIdTestSqlSession = findUserByIdTestSqlSessionFactory.openSession();
 		
-		User returnUser = mybatisSqlSession.selectOne("test.findUserById",1);
+		User returnUser = findUserByIdTestSqlSession.selectOne("test.findUserById",1);
 		
 		System.out.println(returnUser);
 		
-		mybatisSqlSession.close();
+		findUserByIdTestSqlSession.close();
+
+		
 	}
+	
 	
 	@Test
 	public void findUserByNameTest()throws Exception{
 		
-		String mybatisConfigurationFileName = "SqlMapConfig.xml";
+		String findUserByNameTestConfigurationFileName = "SqlMapConfig.xml";
 		
-		InputStream mybatisConfigurationFileInputStream = Resources.getResourceAsStream(mybatisConfigurationFileName);
+		InputStream findUserByNameTestConfigurationFileInputStream = Resources.getResourceAsStream(findUserByNameTestConfigurationFileName);
 		
-		SqlSessionFactory mybatisSqlSessionFactory = new SqlSessionFactoryBuilder().build(mybatisConfigurationFileInputStream);	
+		SqlSessionFactory findUserByNameTestSqlSessionFactory = new SqlSessionFactoryBuilder().build(findUserByNameTestConfigurationFileInputStream);	
 		
-		SqlSession mybatisSqlSession = mybatisSqlSessionFactory.openSession();
+		SqlSession findUserByNameTestSqlSession = findUserByNameTestSqlSessionFactory.openSession();
 		
-		List<User> returnUserList = mybatisSqlSession.selectList("test.findUserByName","张");
+		List<User> returnUserList = findUserByNameTestSqlSession.selectList("test.findUserByName","张");
 		
 		System.out.println(returnUserList);
 		
-		mybatisSqlSession.close();
+		findUserByNameTestSqlSession.close();
 	}
 	
 	@Test
 	public void insertUserTest()throws Exception{
 		
-		String mybatisConfigurationFileName = "SqlMapConfig.xml";
+		String insertUserTestConfigurationFileName = "SqlMapConfig.xml";
 		
-		InputStream mybatisConfigurationFileInputStream = Resources.getResourceAsStream(mybatisConfigurationFileName);
+		InputStream insertUserTestConfigurationFileInputStream = Resources.getResourceAsStream(insertUserTestConfigurationFileName);
 		
-		SqlSessionFactory mybatisSqlSessionFactory = new SqlSessionFactoryBuilder().build(mybatisConfigurationFileInputStream);	
+		SqlSessionFactory insertUserTestSqlSessionFactory = new SqlSessionFactoryBuilder().build(insertUserTestConfigurationFileInputStream);	
 		
-		SqlSession mybatisSqlSession = mybatisSqlSessionFactory.openSession();
+		SqlSession insertUserTestSqlSession = insertUserTestSqlSessionFactory.openSession();
 		
 		User user = new User();
 		
@@ -67,54 +69,54 @@ public class MyBatisTest {
 		user.setUsername("jack");
 		user.setSex("1");
 		
-		mybatisSqlSession.insert("test.insertUser",user);
+		insertUserTestSqlSession.insert("test.insertUser",user);
 		
-		mybatisSqlSession.commit();
+		insertUserTestSqlSession.commit();
 		
-		mybatisSqlSession.close();
+		insertUserTestSqlSession.close();
 		
 	}
 	
 	@Test
 	public void deleteUserTest()throws Exception{
 		
-		String mybatisConfigurationFileName = "SqlMapConfig.xml";
+		String deleteUserTestConfigurationFileName = "SqlMapConfig.xml";
 		
-		InputStream mybatisConfigurationFileInputStream = Resources.getResourceAsStream(mybatisConfigurationFileName);
+		InputStream deleteUserTestConfigurationFileInputStream = Resources.getResourceAsStream(deleteUserTestConfigurationFileName);
 		
-		SqlSessionFactory mybatisSqlSessionFactory = new SqlSessionFactoryBuilder().build(mybatisConfigurationFileInputStream);	
+		SqlSessionFactory deleteUserTestSqlSessionFactory = new SqlSessionFactoryBuilder().build(deleteUserTestConfigurationFileInputStream);	
 		
-		SqlSession mybatisSqlSession = mybatisSqlSessionFactory.openSession();
+		SqlSession deleteUserTestSqlSession = deleteUserTestSqlSessionFactory.openSession();
 		
-		mybatisSqlSession.delete("test.deleteUser", 40);
+		deleteUserTestSqlSession.delete("test.deleteUser", 40);
 		
-		mybatisSqlSession.commit();
+		deleteUserTestSqlSession.commit();
 		
-		mybatisSqlSession.close();
+		deleteUserTestSqlSession.close();
 		
 	}
 	
 	@Test
 	public void updateUserTest()throws Exception{
 		
-		String mybatisConfigurationFileName = "SqlMapConfig.xml";
+		String updateUserTestConfigurationFileName = "SqlMapConfig.xml";
 		
-		InputStream mybatisConfigurationFileInputStream = Resources.getResourceAsStream(mybatisConfigurationFileName);
+		InputStream updateUserTestConfigurationFileInputStream = Resources.getResourceAsStream(updateUserTestConfigurationFileName);
 		
-		SqlSessionFactory mybatisSqlSessionFactory = new SqlSessionFactoryBuilder().build(mybatisConfigurationFileInputStream);	
+		SqlSessionFactory updateUserTestSqlSessionFactory = new SqlSessionFactoryBuilder().build(updateUserTestConfigurationFileInputStream);	
 		
-		SqlSession mybatisSqlSession = mybatisSqlSessionFactory.openSession();
+		SqlSession updateUserTestSqlSession = updateUserTestSqlSessionFactory.openSession();
 		
 		User user = new User();
 		user.setUsername("jack40");
 		user.setSex("1");
 		user.setId(40);
 		
-		mybatisSqlSession.update("test.updateUser",user);
+		updateUserTestSqlSession.update("test.updateUser",user);
 		
-		mybatisSqlSession.commit();
+		updateUserTestSqlSession.commit();
 		
-		mybatisSqlSession.close();
+		updateUserTestSqlSession.close();
 		
 	}
 
